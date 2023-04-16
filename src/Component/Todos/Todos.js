@@ -5,9 +5,10 @@ export class Todos extends Component {
     constructor() {
         super()
         this.state = {
-            name: [{ title: [], edit: false }],
+            name: [],
             showname: false,
-            value: ''
+            value: '',
+            edit: false
         }
     }
     // get_item = () => {
@@ -16,11 +17,12 @@ export class Todos extends Component {
     //     })
     // }
     add_todo = () => {
-        let obj = { title: this.state.value }
-        this.state.name.push(obj)
+        const { name, value } = this.state
+        const newitem = {title : value}
+        const updatelist = [...name, newitem]
         this.setState({
             showname: true,
-            name: this.state.name,
+            name: updatelist,
             value: ''
         })
     }
